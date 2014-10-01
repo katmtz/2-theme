@@ -1,0 +1,301 @@
+<!doctype html>
+<html>
+<head>
+    <title>{Title}</title>
+    <meta name="description" content="Jazzy Theme 4 tumblr" />
+    <meta name="color:Text" content="#000"/>
+    <meta name="image:Background" content=""/>
+    <link rel="shortcut icon" href="{Favicon}">
+
+    <style type="text/css">
+    	/* Sidebar/Header */
+
+		#sidebar {
+			width: 100%;
+			position: fixed;
+			top:0px;
+			text-align: center;
+			background-color: rgba(255,255,255,.5);
+		}
+
+		/* Post Index Styling */
+
+		#posts-wrapper {
+			margin-top: 100px;
+			margin-left: 30%;
+			max-width: 40%
+		}
+
+		.post {
+			padding: 5px;
+			width: 500px;
+			border-bottom-style: dotted;
+			border-bottom-width: 2px;
+			border-bottom-color: #000;
+		}
+
+		.caption, .quotesource, .link-description, .audio-description {
+			padding-left: 5px;
+			border-left: 3px solid #000;
+		}
+
+		.info {
+			padding: 5px;
+			padding-left: 15px;
+			width:480px;
+			background-color: rgba(255,255,255,.3);
+		}
+
+		.footer {
+			width: 100%;
+			padding: 5px;
+			text-align: left;
+
+		}
+
+		/* Permalink Styling */
+
+		.tags {
+			width: 100%;
+			padding: 5px;
+			padding-bottom: 50px;
+		}
+
+		/* Global Settings */
+		a {
+			text-decoration: none;
+			color: {TitleColor};
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		span#title {
+			text-decoration: underline;
+			font-style: italic;
+		}
+
+		p {
+			color: {color:Text};
+		}
+
+		body {
+			background-color: {BackgroundColor};
+			background-image: {image:Background};
+			font-family: Consolas, sans-serif;
+		}
+    </style>
+
+</head>
+
+<body>
+    <div class="site-wrapper" id="site-wrapper">
+	<div class="wrapper" id="sidebar">
+		<p id="head-text"><span id="title"><b><a href="{BlogURL}">{Title}</a></b></span>{block:HasPages} // {block:Pages}<a href="{URL}">{Label} </a>{/block:Pages}{/block:HasPages}</p> 
+		<p>{Description}</p>
+        
+	</div>
+
+	{block:TagPage}
+	    <div class="tagpageheader">
+	    	<p>#{Tag}</p>
+        </div>
+    {/block:TagPage}
+
+    <div class="wrapper" id="posts-wrapper">
+	{block:Posts}
+		{block:Text}
+		<div class="post text" id="{PostID}">
+			{block:Title}
+			<p class="title">{Title}</p>
+			{/block:Title}
+			<p>{Body}</p>
+			<div class="info" id="{PostID}-info">
+				<p>{block:NoteCount}
+				   {NoteCountWithLabel},
+				   {/block:NoteCount} 
+				   {block:Date}
+				   <a href="{Permalink}"> {TimeAgo}</a>
+				   {/block:Date}</p>
+	        </div>
+		</div>
+        {/block:Text}
+
+        {block:Photo}	       
+        <div class="post photo" id="{PostID}">
+	        <img src="{PhotoURL-500}" alt="{PhotoAlt}" />
+	        {block:PermalinkPage}
+	        {block:Caption}
+	        <div class="caption" id="{PostID}-cap">
+		        <p>{Caption}</p>
+	        </div>
+	        {/block:Caption}
+	        {/block:PermalinkPage}
+	        <div class="info" id="{PostID}-info">
+				<p>{block:NoteCount}
+				   {NoteCountWithLabel},
+				   {/block:NoteCount}
+				   {block:Date}
+				   <a href="{Permalink}"> {TimeAgo}</a>
+				   {/block:Date}</p>
+	        </div>
+        </div>
+	    {/block:Photo}
+
+	    {block:Photoset}
+	    <div class="post photoset" id ="{PostID}">
+	        {Photoset}
+	        {block:PermalinkPage}
+	        {block:Caption}
+	        <div class="caption" id="{PostID}-cap">
+	        	<p>{Caption}</p>
+	        </div>
+	        {/block:Caption}
+	        {/block:PermalinkPage}
+	        <div class="info" id="{PostID}-info">
+				<p>{block:NoteCount}
+				   {NoteCountWithLabel}, 
+				   {/block:NoteCount}
+				   {block:Date}
+				   <a href="{Permalink}"> {TimeAgo}</a>
+				   {/block:Date}</p>
+	        </div>
+	     </div>
+	    {/block:Photoset}
+
+	    {block:Quote}
+	    <div class="post quote-{Length}" id="{PostID}">
+	    	<p>{Quote}</p>
+	    	{block:Source}
+	    	<div class="quotesource" id="{PostID}-qsrc">
+	    		<p>{Source}</p>
+	    	</div>
+	    	{/block:Source}
+	    	<div class="info" id="{PostID}-info">
+				<p>{block:NoteCount}
+				   {NoteCountWithLabel},
+				   {/block:NoteCount}
+				   {block:Date}
+				   <a href="{Permalink}"> {TimeAgo}</a>
+				   {/block:Date}</p>
+	        </div>
+        </div>
+	    {/block:Quote}
+
+	    {block:Link}
+	    <div class="post link" id="{PostID}">
+            <a href="{Target}">{Name}</a>
+            {block:PermalinkPage}
+            <div class="link-description">
+	            {block:Description}
+	            	<p>{Description}</p>
+	            {/block:Description}
+	        </div>
+            {/block:PermalinkPage}
+            <div class="info" id="{PostID}-info">
+				<p>{block:NoteCount}
+				   {NoteCountWithLabel},
+				   {/block:NoteCount} 
+				   {block:Date}
+				   <a href="{Permalink}"> {TimeAgo}</a>
+				   {/block:Date}</p>
+	        </div>
+        </div>
+	    {/block:Link}
+
+	    {block:Chat}
+	    <div class="post chat" id="{PostID}">
+	    	{block:Lines}
+	    		<p>{Name} : {Line}</p>
+	    	{/block:Lines}
+	    	<div class="info" id="{PostID}-info">
+				<p>{block:NoteCount}
+				   {NoteCountWithLabel},
+				   {/block:NoteCount} 
+				   {block:Date}
+				   <a href="{Permalink}"> {TimeAgo}</a>
+				   {/block:Date}</p>
+	        </div>
+	    </div>
+	    {/block:Chat}
+
+	    {block:Audio}
+	    <div class="post audio" id="{PostID}">
+	    	{block:AlbumArt}
+	    	    <img src="{AlbumArtURL}" />
+	    	{/block:AlbumArt}
+	    	{block:AudioPlayer}
+	    		{AudioPlayer}
+	    	{/block:AudioPlayer}
+	    	{block:PermalinkPage}
+	    	<div class="audio-description">
+	    		<ul>
+	    			{block:TrackName}
+	    			<li>Track Name: {TrackName}</li>
+	    			{/block:TrackName}
+	    			{block:Artist}
+	    			<li>Artist: {Artist}</li>
+	    			{/block:Artist}
+	    			{block:Album}
+	    			<li>Album: {Album}</li>
+	    			{/block:Album}
+	    		</ul>
+	    	</div>
+	    	{/block:PermalinkPage}
+	    	<div class="info" id="{PostID}-info">
+				<p>{block:NoteCount}
+				   {NoteCountWithLabel},
+				   {/block:NoteCount} 
+				   {block:Date}
+				   <a href="{Permalink}"> {TimeAgo}</a>
+				   {/block:Date}</p>
+	        </div>
+	    {/block:Audio}
+
+	    {block:Video}
+	    <div class="post video" id="{PostID}">
+	    	{Video-500}
+	    	{block:PermalinkPage}
+	    	{block:Caption}
+	    	<div class="caption">
+	    		<p>{Caption}</p>
+	    	</div>
+	    	{/block:Caption}
+	    	{/block:PermalinkPage}
+	    	<div class="info" id="{PostID}-info">
+				<p>{block:NoteCount}
+				   {NoteCountWithLabel},
+				   {/block:NoteCount} 
+				   {block:Date}
+				   <a href="{Permalink}"> {TimeAgo}</a>
+				   {/block:Date}</p>
+	        </div>
+	    </div>
+	    {/block:Video}
+
+	    {block:HasTags}
+	    {block:PermalinkPage}
+	    <div class="tags">
+	    	<p>Tagged with:{block:Tags}<a href="{TagURL}">{Tag}</a>, {/block:Tags}</p>
+	    </div>
+	    {/block:PermalinkPage}
+	    {/block:HasTags}
+
+    {/block:Posts}
+    </div>
+
+    {block:Pagination}
+    <div class="footer">
+    	{block:PreviousPage}
+    		<a href="{PreviouPage}">back</a>
+    	{/block:PreviousPage}
+    	{block:NextPage}
+    		<a href="{NextPage}">next</a>
+    	{/block:NextPage}
+    </div>
+    {/block:Pagination}
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+/* This file is not actually used since tumblr is terrible about
+importing stylesheets and I'm too lazy to host this elsewhere but 
+it's always nice to have a separate file for css. */
+
+/* Sidebar/Header */
+
+#sidebar {
+	width: 100%;
+	position: fixed;
+	top:0px;
+	text-align: center;
+	background-color: rgba(255,255,255,.5);
+}
+
+/* Post Index Styling */
+
+#posts-wrapper {
+	margin-top: 100px;
+	margin-left: 30%;
+	max-width: 500px;
+}
+
+.post {
+	padding: 5px;
+	max-width: 500px;
+}
+
+.caption, .quotesource, .link-description, .audio-description {
+	padding-left: 5px;
+	border-left: 3px solid #ccc;
+}
+
+.info {
+	padding: 5px;
+	padding-left: 15px;
+	width:485px;
+	background-color: rgba(255,255,255,.3);
+}
+
+#footer {
+	width: 100%;
+	padding: 5px;
+
+}
+
+/* Permalink Styling */
+
+.tags {
+	width: 100%;
+	padding: 5px;
+	padding-bottom: 50px;
+}
+
+/* Global Settings */
+a {
+	text-decoration: none;
+	color: {TitleColor};
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+span#title {
+	text-decoration: underline;
+	font-style: italic;
+}
+
+p {
+	color: {color:Text};
+}
+
+body {
+	background-color: {BackgroundColor};
+	background-image: {image:Background};
+	font-family: Consolas, sans-serif;
+}
+
+
+
+
